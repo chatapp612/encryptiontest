@@ -1,22 +1,13 @@
 {
-  "files": {
-    "main.css": "/encryptiontest/static/css/main.2b9a5ee1.chunk.css",
-    "main.js": "/encryptiontest/static/js/main.bcf6ca54.chunk.js",
-    "main.js.map": "/encryptiontest/static/js/main.bcf6ca54.chunk.js.map",
-    "runtime-main.js": "/encryptiontest/static/js/runtime-main.4a1e0649.js",
-    "runtime-main.js.map": "/encryptiontest/static/js/runtime-main.4a1e0649.js.map",
-    "static/js/2.fee907b7.chunk.js": "/encryptiontest/static/js/2.fee907b7.chunk.js",
-    "static/js/2.fee907b7.chunk.js.map": "/encryptiontest/static/js/2.fee907b7.chunk.js.map",
-    "index.html": "/encryptiontest/index.html",
-    "precache-manifest.8990dd3decd579f46410c4bba30cac7e.js": "/encryptiontest/precache-manifest.8990dd3decd579f46410c4bba30cac7e.js",
-    "service-worker.js": "/encryptiontest/service-worker.js",
-    "static/css/main.2b9a5ee1.chunk.css.map": "/encryptiontest/static/css/main.2b9a5ee1.chunk.css.map",
-    "static/js/2.fee907b7.chunk.js.LICENSE.txt": "/encryptiontest/static/js/2.fee907b7.chunk.js.LICENSE.txt"
-  },
-  "entrypoints": [
-    "static/js/runtime-main.4a1e0649.js",
-    "static/js/2.fee907b7.chunk.js",
-    "static/css/main.2b9a5ee1.chunk.css",
-    "static/js/main.bcf6ca54.chunk.js"
-  ]
+  "main.css": "/encryptiontest/static/css/main.d2507c6a.chunk.css",
+  "main.js": "/encryptiontest/static/js/main.2c5067ba.chunk.js",
+  "main.js.map": "/encryptiontest/static/js/main.2c5067ba.chunk.js.map",
+  "static/js/1.eeacd89c.chunk.js": "/encryptiontest/static/js/1.eeacd89c.chunk.js",
+  "static/js/1.eeacd89c.chunk.js.map": "/encryptiontest/static/js/1.eeacd89c.chunk.js.map",
+  "runtime~main.js": "/encryptiontest/static/js/runtime~main.05649bf2.js",
+  "runtime~main.js.map": "/encryptiontest/static/js/runtime~main.05649bf2.js.map",
+  "static/css/main.d2507c6a.chunk.css.map": "/encryptiontest/static/css/main.d2507c6a.chunk.css.map",
+  "index.html": "/encryptiontest/index.html",
+  "precache-manifest.b0762f01873c6ad402a8b50919b47d3e.js": "/encryptiontest/precache-manifest.b0762f01873c6ad402a8b50919b47d3e.js",
+  "service-worker.js": "/encryptiontest/service-worker.js"
 }

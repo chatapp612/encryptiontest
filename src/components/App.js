@@ -54,6 +54,7 @@ const App = () => {
     const [allMessages, setAllMessages] = useState([]);
     const [senders, setSenders] = useState([]);
     const [selectedSender, setSelectedSender] = useState(null);
+    const [selectedSenderName, setSelectedSenderName] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [registeredContacts, setRegisteredContacts] = useState([]);
     const location = useLocation();
@@ -277,7 +278,9 @@ const formatDate = (timestamp) => {
         <div className="app">
            
             <div className="sidebar">
-            
+            {setSelectedSenderName(getUserName(selectedSender))}
+
+            <p>{selectedSenderName}</p>
           
                 <ul className="senders-list">
                     {senders.length > 0 ? (
@@ -318,50 +321,61 @@ const formatDate = (timestamp) => {
 </div>
 
 
-            <div className="chat-container">
-           
-            <div className="chat-window" style={{ maxHeight: '500px', overflowY: 'auto' }}>
-                
-    <ul className="messages">
-        {(() => {
+<div className="chat-container">
+  <div className="chat-window" style={{ maxHeight: '500px', overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+    {selectedSender ? (
+      <>
+        {/* Displaying messages when a sender is selected */}
+        <ul className="messages" style={{ flexGrow: 1 }}>
+          {(() => {
             const groupedMessages = groupMessagesByDate(allMessages); // group messages before rendering
             return Object.keys(groupedMessages).length > 0 ? (
-                Object.keys(groupedMessages).map((date, index) => (
-                    <li key={index} className="message-section">
-                        <div className="date-header">
-                            <span>{date}</span>
-                        </div>
-                        {groupedMessages[date].map((msg, msgIndex) => (
-                            <div key={msgIndex} className={`message ${msg.direction}`}>
-                                <p>{msg.content}</p>
-                                <span className="timestamp">{formatTime(msg.timestamp)}</span>
-                            </div>
-                        ))}
-                    </li>
-                ))
+              Object.keys(groupedMessages).map((date, index) => (
+                <li key={index} className="message-section">
+                  <div className="date-header">
+                    <span>{date}</span>
+                  </div>
+                  {groupedMessages[date].map((msg, msgIndex) => (
+                    <div key={msgIndex} className={`message ${msg.direction}`}>
+                      <p>{msg.content}</p>
+                      <span className="timestamp">{formatTime(msg.timestamp)}</span>
+                    </div>
+                  ))}
+                </li>
+              ))
             ) : (
-                <li>No messages to display</li>
+              <li>No messages to display</li>
             );
-        })()}
-    </ul>
-    <div className="message-form">
-                    <input
-                        type="text"
-                        value={message}
-                        className="message-input"
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Type a message..."
-                    />
-                  {/* Send Icon as an Image */}
-                
-                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5UlEQVR4nO3WMUpDQRSF4Q/UQhsRbKzdQMAFaCtqmTalYh9wATZuwMIt2FoGRJusIK0QSF4jdnaCXBGmsBFM4purkAN//V+GmTOXZRJzhCmecIGNWuIJ4gsNzrDWtji+YYxTrNQWR2GEboY4CkPsZ4ijMEAnQxx4xy12a4uj8IYb7MwjbhaUf/KKS2zOIj4uBRK/wAv6WJ9lgC3soYcr3JU2m2eAaemAVQtkGwc4xzXu8fzDAR6zxA9/8qhPsi5Xk/WcIqtA4r9U5qD2JzGs/S2Oai8C47ZXn0nWsndY5NXX22W0kQ875CXXn83dMgAAAABJRU5ErkJggg==" alt="send"
-                className="send-icon" 
-                onClick={sendMessage} 
-            />
-                </div>
+          })()}
+        </ul>
+
+        {/* Message Form (visible only when sender is selected) */}
+        <div className="message-form" style={{ marginTop: 'auto' }}>
+          <input
+            type="text"
+            value={message}
+            className="message-input"
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Type a message..."
+          />
+          {/* Send Icon as an Image */}
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5UlEQVR4nO3WMUpDQRSF4Q/UQhsRbKzdQMAFaCtqmTalYh9wATZuwMIt2FoGRJusIK0QSF4jdnaCXBGmsBFM4purkAN//V+GmTOXZRJzhCmecIGNWuIJ4gsNzrDWtji+YYxTrNQWR2GEboY4CkPsZ4ijMEAnQxx4xy12a4uj8IYb7MwjbhaUf/KKS2zOIj4uBRK/wAv6WJ9lgC3soYcr3JU2m2eAaemAVQtkGwc4xzXu8fzDAR6zxA9/8qhPsi5Xk/WcIqtA4r9U5qD2JzGs/S2Oai8C47ZXn0nWsndY5NXX22W0kQ875CXXn83dMgAAAABJRU5ErkJggg=="
+            alt="Send"
+            className="send-icon"
+            onClick={sendMessage}
+          />
+        </div>
+      </>
+    ) : (
+      // Displaying blank window when no sender is selected
+      <div className="blank-chat-window">
+        <p>Select a sender to start the conversation</p>
+      </div>
+    )}
+  </div>
 </div>
-               
-            </div>
+
             {isModalOpen && (
     <div className="modal">
         <div className="modal-content">
